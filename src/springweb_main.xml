@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+	<!-- 配置解析器 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	
+	<bean id="parameterMethodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+    	<property name="paramName" value="method"/>
+    </bean>
+	
+	<!-- 分配置文件在此处导入 -->
+	<!-- 商品详情界面配置文件导入 -->
+	<import resource="classpath:springweb_light.xml"/>
+	<import resource="classpath:springweb_annotation.xml"/>
+	<import resource="classpath:springweb_myshopcart.xml"/>
+	<import resource="classpath:springweb_warestype.xml"/>
+	<import resource="classpath:springweb_login.xml"/>
+	<import resource="classpath:springweb_register.xml"/>
+	<import resource="classpath:springweb_message.xml"/>
+	<import resource="classpath:springweb_orders.xml"/>
+	<import resource="classpath:springweb_usersInformation.xml"/>
+</beans>

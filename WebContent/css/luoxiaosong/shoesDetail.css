@@ -1,0 +1,159 @@
+body{
+	background-color: #F5F5F5;
+}
+#head {
+	margin: auto;
+}
+
+#body_top {
+	height: 450px;
+	border: 1px solid #DCDCDC;
+	background-color: white;
+}
+
+#body_bottom {
+	height: 500px;
+	background-color: #F5F5F5;
+}
+
+#footer {
+	border: 1px solid #DCDCDC;
+	width:100%;
+	margin:auto;
+	margin-top: 20px;
+}
+
+/*---------------body_top_left_star-------------------------*/
+#body_top_daohang{
+	height: 40px;
+	line-height: 50px;
+}
+#body_top_left {
+	height: 100%;
+}
+
+#body_top_right {
+	height: 100%;
+}
+
+#big_img {
+	height: 350px;
+	width: 350px;
+	margin-top: 30px;
+	margin-left: 20px;
+	float: left;
+	border: 1px solid #DCDCDC;
+}
+
+#big_img img {
+	width: 100%;
+	height: 100%;
+}
+
+
+#small_img {
+	float: left;
+	margin-top: 30px;
+	margin-left: 10px;
+	border: 1px solid red;
+}
+
+.small_img1 {
+	float: left;
+	margin-top: 5.3px;
+	margin-left: 10px;
+	border: 1px solid #DCDCDC;
+}
+
+/*---------------body_top_left_end-------------------------*/
+	/*---------------body_top_right_star-------------------------*/
+#body_top_right_container {
+	margin-top: 20px;
+	height: 80%;
+}
+.yanse{
+	margin-left: 10px;
+	width:32px;
+	border: 1px solid #DCDCDC;
+	height: 32px;
+}
+.chima font{
+	height:35px;
+	float: left;
+	line-height:35px;
+}
+.chima p{
+	margin-left: 10px;
+	height:35px;
+	line-height:35px;
+	border: 1px solid #DCDCDC;
+	float: left;
+	width: 40px;
+	text-align: center;
+}
+.shuliang font{
+	height:30px;
+	float: left;
+	line-height:30px;
+}
+.shuliang input{
+	float: left;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+}
+.shuliang p{
+	height:30px;
+	line-height:30px;
+	border: 1px solid #DCDCDC;
+	float: left;
+	width: 30px;
+	text-align: center;
+}
+
+/*---------------body_top_right_end-------------------------*/
+#top_bottom{
+	height: 12px;
+}
+	/*-------body_bottom_left-star-----------------------*/
+.leftNav{
+	margin-top: 10px;
+	width: 100%;
+}
+	/*-------body_bottom_left-end-----------------------*/
+	/*-------body_bottom_right-star-----------------------*/
+#body_bottom_right_container {
+	margin-left: 5px;
+	width: 780px;
+	border: 1px solid #DCDCDC;
+	background-color: white;
+}
+#body_bottom_right_container_bootom{
+	background-color: white;
+	width: 700px;
+	margin: auto;
+}
+/*-------右下表格样式----------*/
+.first{
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+/*--------右下评论-----------------*/
+#plHead{
+	width: 100%;
+	height: 100px;
+}
+#plBody_head{
+	width: 100%;
+	height: 100px;
+}
+
+/*-------body_bottom_right-end-----------------------*/
+#body_footer{
+	height: 30px;
+}
+
+
+
+

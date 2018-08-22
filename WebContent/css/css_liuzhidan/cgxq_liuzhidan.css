@@ -1,0 +1,30 @@
+*{
+	font-size: 12px;
+}
+#myTab{
+	width: 650px;
+	margin: 0 auto;
+}
+#myTabContent{
+	width: 650px;
+	margin: 0 auto;
+}
+#goodsInfo{
+	width: 100%;
+	height: 100%;
+	border: 1px solid green;
+}
+#stockInfo{
+	width: 100%;
+	height: 100%;
+	border: 1px solid pink;
+}
+.table{
+	contenteditable: true;
+}
+.tab_title,.tab_title th{
+	background-color: green;
+}
+.tab_total_y,.tab_total_x{
+	background-color: orange;
+}

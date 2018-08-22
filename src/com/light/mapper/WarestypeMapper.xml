@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.WarestypeMapper" >
+ 
+  <resultMap id="WarestypeMap" type="com.light.pojo.Light" >
+    <id column="lightId" property="lightId" jdbcType="INTEGER" />
+    <result column="catagoryId" property="catagoryId" jdbcType="INTEGER" />
+    <result column="brandId" property="brandId" jdbcType="INTEGER" />
+    <result column="styleId" property="styleId" jdbcType="INTEGER" />
+    <result column="stuff" property="stuff" jdbcType="VARCHAR" />
+    <result column="color" property="color" jdbcType="VARCHAR" />
+    <result column="locate" property="locate" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="images" property="images" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="WarestypeBrandMap" type="com.light.pojo.Brand" >
+    <id column="brandId" property="brandId" jdbcType="INTEGER" />
+    <result column="brandName" property="brandName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+   <resultMap id="WarestypeStyleMap" type="com.light.pojo.Style" >
+    <id column="styleId" property="styleId" jdbcType="INTEGER" />
+    <result column="styleName" property="styleName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+   <resultMap id="WarestypeCatagoryMap" type="com.light.pojo.Catagory" >
+    <id column="catagoryId" property="catagoryId" jdbcType="INTEGER" />
+    <result column="catagoryName" property="catagoryName" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <!-- 查询灯饰品牌信息 -->
+   <select id="selectWarestypeBrand" resultType="com.light.pojo.Brand">
+  		SELECT * FROM brand
+  </select>
+  
+   <!-- 查询灯饰风格信息 -->
+   <select id="selectWarestypeStyle" resultType="com.light.pojo.Style">
+  		SELECT * FROM style
+  </select>
+  
+   <!-- 查询灯饰种类信息 -->
+   <select id="selectWarestypeCatagory" resultType="com.light.pojo.Catagory">
+  		SELECT * FROM catagory
+  </select>
+  
+  <!-- 根据关键字查询灯饰商品信息表数据-->
+  <select id="selectWarestype" resultType="com.light.pojo.Light">
+  		SELECT * FROM(SELECT  brandName,catagoryName,styleName,light.* 
+					  FROM brand,catagory,style,light 
+					  WHERE brand.brandId = light.brandId AND 
+					  catagory.catagoryId = light.catagoryId 
+					  AND style.styleId = light.styleId) a
+		WHERE a.description LIKE #{keyword}
+  </select>
+  
+</mapper>

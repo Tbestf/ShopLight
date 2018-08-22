@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.OrdersMapper" >
+
+<!--   <resultMap id="OrdersMap" type="com.light.pojo.Orders" > -->
+<!--     <id column="orderId" property="orderId" jdbcType="VARCHAR" /> -->
+<!--     <result column="userId" property="userId" jdbcType="INTEGER" /> -->
+<!--     <result column="lightId" property="lightId" jdbcType="INTEGER" /> -->
+<!--     <result column="buyQuantity" property="buyQuantity" jdbcType="INTEGER" /> -->
+<!--     <result column="totalPrice" property="totalPrice" jdbcType="DOUBLE" /> -->
+<!--     <result column="orderDate" property="orderDate" jdbcType="VARCHAR" /> -->
+<!--     <result column="orderStateId" property="orderStateId" jdbcType="INTEGER" /> -->
+<!--     <result column="orderState" property="orderState" jdbcType="VARCHAR" /> -->
+<!--     <result column="showOrNot" property="showOrNot" jdbcType="INTEGER" /> -->
+<!--     <result column="receiveName" property="receiveName" jdbcType="VARCHAR" /> -->
+<!--     <result column="receivePhone" property="receivePhone" jdbcType="VARCHAR" /> -->
+<!--     <result column="address" property="address" jdbcType="VARCHAR" /> -->
+<!--     <result column="email" property="email" jdbcType="VARCHAR" /> -->
+<!--     <result column="postalCode" property="postalCode" jdbcType="VARCHAR" /> -->
+<!--     <result column="postType" property="postType" jdbcType="VARCHAR" />  -->
+<!--     <result column="paymentType" property="paymentType" jdbcType="VARCHAR" />  -->
+<!--     <result column="postFee" property="postFee" jdbcType="INTEGER" />  -->
+<!--   </resultMap> -->
+  <!-- 添加订单信息表数据 -->
+  <insert id="insertOrders" parameterType="com.light.pojo.Orders" >
+ 		insert into orders (orderId,userId,lightId, buyQuantity,totalPrice,orderDate,
+ 		orderStateId,orderState, showOrNot,receiveName,receivePhone, address, email,
+ 		 postalCode, postType,paymentType, postFee) 
+		VALUES (#{orderId},#{userId},#{lightId},#{buyQuantity},#{totalPrice},#{orderDate},
+		#{orderStateId},#{orderState},#{showOrNot},#{receiveName},#{receivePhone},
+		#{address},#{email},#{postalCode},#{postType},#{paymentType},#{postFee})
+  </insert>
+  
+  <!-- 修改订单信息表数据 -->
+  <update id="updateOrders" parameterType="com.light.pojo.Orders">
+		update 	orders set  orderId=#{orderId}, buyQuantity=#{buyQuantity},
+		totalPrice=#{totalPrice},orderDate=#{orderDate },orderStateId=#{ orderStateId},
+		orderState=#{ orderState},showOrNot=#{showOrNot},receiveName=#{receiveName},receivePhone=#{receivePhone},
+		 address=#{address}, email=#{email}, postalCode=#{postalCode}, postType=#{postType},
+		 paymentType=#{paymentType}, postFee=#{postFee} where orderId=#{orderId}
+  </update>
+  
+   <update id="userUpdateOrders" parameterType="com.light.pojo.Orders">
+		update 	orders set orderStateId=#{orderStateId},
+		orderState=#{orderState} where orderId=#{orderId}
+  </update>
+  
+ 	<!-- 对购物车的单个商品的数量进行修改 -->
+<!-- 	<update id="updateUcartNum" parameterType="Usercart"> -->
+<!-- 		update 	usercart set ucart_num = #{ucartNum} where ucart_id=#{ucartId} -->
+<!-- 	</update> --> 
+  
+  <!-- 删除灯饰商品信息表数据 -->
+  <delete id="deleteOrders" parameterType="com.light.pojo.Orders"> 
+		delete from orders where orderId = #{orderId}
+  </delete>
+  
+   <!-- 查询订单信息表数据-->
+  <select id="selectOrders" resultType="com.light.pojo.Orders">
+  		select * from orders
+  </select>
+	
+  <!-- 查询订单信息表数据-->
+  <select id="totalselectOrders" resultType="com.light.pojo.Orders">
+  		select * from orders
+  </select>
+  <!-- 详细订单页面显示查询信息 -->
+	<select id="detailordersDisplay" resultType="com.light.pojo.OrderDisplay">
+<!--select result.rsid,student.sname  from result,student 
+                              where result.rname=#{rname} and student.sid = result.rsid  -->
+	  
+	    select light.lightId,light.catagoryId,light.brandId,light.styleId,light.stuff,
+	    light.color,light.locate,light.price,light.quantity,light.description,light.images,
+	    orders.orderId,orders.userId,orders.lightId, orders.buyQuantity,orders.totalPrice,
+	    orders.orderDate,orders.orderStateId,orders.orderState, orders.showOrNot,
+	    orders.receiveName,orders.receivePhone, orders.address, orders.email,orders.postalCode,
+	    orders.postType,orders.paymentType, orders.postFee from orders,light 
+        where orders.orderId=#{orderId} AND orders.lightId=light.lightId 
+        AND orders.orderStateId =#{orderStateId}
+	</select>
+  
+   <select id="orderIdselectOrders" resultType="com.light.pojo.Orders">
+  		select * from orders where orderId=#{orderId}
+  </select>
+   <select id="userIdselectOrders" resultType="com.light.pojo.Orders">
+  		select * from orders where userId=#{userId}
+  </select>
+  
+   <select id="userselectOrders" resultType="com.light.pojo.Orders">
+  		select * from orders where userId = #{userId} AND orderStateId=#{orderStateId}
+  </select>
+  <!-- 订单页面显示查询信息 -->
+	<select id="ordersDisplay" resultType="com.light.pojo.OrderDisplay">
+<!--select result.rsid,student.sname  from result,student 
+                              where result.rname=#{rname} and student.sid = result.rsid  -->
+	  
+	    select light.lightId,light.catagoryId,light.brandId,light.styleId,light.stuff,
+	    light.color,light.locate,light.price,light.quantity,light.description,light.images,
+	    orders.orderId,orders.userId,orders.lightId, orders.buyQuantity,orders.totalPrice,
+	    orders.orderDate,orders.orderStateId,orders.orderState, orders.showOrNot,
+	    orders.receiveName,orders.receivePhone, orders.address, orders.email,orders.postalCode,
+	    orders.postType,orders.paymentType, orders.postFee from orders,light 
+        where orders.userId=#{userId} AND orders.lightId=light.lightId 
+       
+	</select>
+  <!-- 订单页面显示查询信息 -->
+	<select id="userIdOrdersDisplay" resultType="com.light.pojo.OrderDisplay">
+<!--select result.rsid,student.sname  from result,student 
+                              where result.rname=#{rname} and student.sid = result.rsid  -->
+	  
+	    select light.lightId,light.catagoryId,light.brandId,light.styleId,light.stuff,
+	    light.color,light.locate,light.price,light.quantity,light.description,light.images,
+	    orders.orderId,orders.userId,orders.lightId, orders.buyQuantity,orders.totalPrice,
+	    orders.orderDate,orders.orderStateId,orders.orderState, orders.showOrNot,
+	    orders.receiveName,orders.receivePhone, orders.address, orders.email,orders.postalCode,
+	    orders.postType,orders.paymentType, orders.postFee from orders,light 
+        where orders.orderId=#{orderId} AND orders.lightId=light.lightId 
+       
+	</select>
+	
+	<!-- 查询刚加入的订单 -->
+  	<select id="selectmyorders" resultType="com.light.pojo.OrderDisplay">
+  		select orderId,images,description,color,price,buyQuantity,totalPrice from orders,light where light.lightId = orders.lightId and orderStateId = #{orderStateId} and userId = #{userId}
+  	</select>
+ 
+ 	<!-- 查询总金额和总数量 -->
+  	<select id="AllPN" resultType="com.light.pojo.OrderDisplay">
+  		SELECT SUM(buyQuantity) as buyQuantity, SUM(totalPrice) as totalPrice from orders where userId = #{userId} and orderStateId = #{orderStateId}
+  	</select>
+  	
+  	<!-- 修改订单部分信息 -->
+ 	<update id="updateOrder" parameterType="com.light.pojo.Users">
+		update orders set receiveName=#{userName},receivePhone=#{phone},address=#{address},
+		postalCode=#{postalCode},postType=1,paymentType="微信",postFee=0 where userId=#{userId} and orderStateId=1
+  	</update>
+  	
+  	<!-- 修改订单状态1 -->
+  	<update id="updateOS" parameterType="com.light.pojo.Orders">
+		update 	orders set orderStateId=#{orderStateId},
+		orderState=#{orderState} where userId=#{userId} and orderStateId = 1
+ 	</update>
+</mapper>

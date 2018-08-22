@@ -1,0 +1,66 @@
+/* 
+	ȫ�ֱ���
+*/
+
+
+
+/*
+	��DIV���ñ�����ɫ
+*/
+.bodydiv{
+	padding:25px 0px 100px 0px;
+	background-color:white;
+	height:650px;
+}
+
+/*
+	ͼƬDIV
+*/
+.shoediv{
+	height:550px;
+	width:600px;
+	margin:0px 35px 0px 35px;
+	background-image:url(../../images/s/04.jpg);
+	background-repeat:no-repeat;
+	background-size:cover;
+	background-color:#E0E1E5;
+	float:left;
+	border: 1px solid #dfdfdf;
+}
+
+/*
+	��½����
+*/
+.logindiv{
+	height:325px;
+	width:380px;
+	float:left;
+	background-color:#DDDDDD;
+	margin:160px 50px 25px 35px;
+	border: 1px solid #dfdfdf;
+}
+/*
+	ȫ�ֱ���
+*/
+p input[type=text],[type=password]{
+	display:block;
+	width:250px;
+	height:42px;
+	float:left;
+	margin:20px 0 0 0;
+}
+
+p img{
+	border: 1px solid #66AFE9;
+	float:left;	
+	margin:20px 0 0 0;
+}
+
+.form-group{
+	
+}
+
+.aa a{
+	text-decoration:none;
+	color:gray;
+}

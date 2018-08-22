@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+	<!-- 4、配置数据访问实现类的bean -->
+	<!-- 用户评价Dao层依赖注入 -->
+	<bean id="userCommentDaoImpl" class="com.shoes.dao.impl.UserCommentDaoImpl">
+		<property name="sqlsessionfactory" ref="sqlSessionFactory"></property>
+	</bean>
+
+	<!-- 5、配置业务实现类的bean -->	
+	<!-- 用户评价service层依赖注入 -->
+	<bean id="userCommentServiceImpl" class="com.shoes.service.impl.UserCommentServiceImpl">
+		<property name="userCommentDao" ref="userCommentDaoImpl"></property>
+	</bean>
+	
+	<!-- 配置事物通知 -->
+	<!-- 使用事务 -->
+	<tx:advice id="userCommentAdivce" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="insertComment" propagation="REQUIRES_NEW"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置事务切点 -->
+	<aop:config>
+		<!-- 配置切入点 -->
+		<aop:pointcut expression="execution(* com.shoes.service.impl.UserCommentServiceImpl.*(..))" id="userCommentpointcut"/>
+		<!-- 配置事物通知（配置哪些方法只读，哪些方法必须开启一个新事物） -->
+		<aop:advisor advice-ref="userCommentAdivce" pointcut-ref="userCommentpointcut"/>
+	</aop:config>
+</beans>

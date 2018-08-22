@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.LightMapper" >
+ 
+  <resultMap id="LightMap" type="com.light.pojo.Light" >
+    <id column="lightId" property="lightId" jdbcType="INTEGER" />
+    <result column="catagoryId" property="catagoryId" jdbcType="INTEGER" />
+    <result column="brandId" property="brandId" jdbcType="INTEGER" />
+    <result column="styleId" property="styleId" jdbcType="INTEGER" />
+    <result column="stuff" property="stuff" jdbcType="VARCHAR" />
+    <result column="color" property="color" jdbcType="VARCHAR" />
+    <result column="locate" property="locate" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="quantity" property="quantity" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="images" property="images" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="statisticsMap" type="com.light.pojo.Statistics" >
+    <id column="lightId" property="lightId" jdbcType="INTEGER" />
+    <result column="clicks" property="clicks" jdbcType="INTEGER" />
+    <result column="storeCount" property="storeCount" jdbcType="INTEGER" />
+    <result column="saleCount" property="saleCount" jdbcType="INTEGER" />
+  </resultMap>
+  
+  <!-- 添加灯饰商品信息表数据 -->
+  <insert id="insertLight" parameterType="com.light.pojo.Light" >
+ 		insert into light (catagoryId,brandId,styleId,stuff,color,locate,price,quantity,description,images) 
+		values (#{catagoryId},#{brandId},#{styleId},#{stuff},#{color},#{locate},#{price},#{quantity},#{description},#{images})
+  </insert>
+ 
+  <!-- 修改灯饰商品信息表数据 -->
+  <update id="updateLight" parameterType="com.light.pojo.Light">
+		update 	light set catagoryId = #{catagoryId},catagoryId = #{catagoryId},brandId = #{brandId},styleId = #{styleId},
+		stuff = #{stuff},color = #{color},locate = #{locate},price = #{price},quantity = quantity,description = #{description},
+		images = #{images} where lightId=#{lightId}
+  </update>
+  
+  <!-- 删除灯饰商品信息表数据 -->
+  <delete id="deleteLight" parameterType="com.light.pojo.Light"> 
+		delete from light where lightId = #{lightId}
+  </delete>
+	
+  <!-- 查询所有灯饰商品信息表数据-->
+  <select id="selectAllLight" resultType="com.light.pojo.LightNew">
+  		select * from light,brand,style,catagory WHERE light.brandId=brand.brandId AND light.styleId=  style.styleId AND light.catagoryId=catagory.catagoryId
+  </select>
+ 
+  <!-- 查询灯饰商品信息表数据 -->
+  <select id="selectDLight" parameterType="com.light.pojo.Light" resultType="com.light.pojo.Light">
+  		select * from light where description like "%"#{description}"%"
+  </select>
+  
+  <!-- 查询灯饰商品信息表数据-->
+  <select id="selectIdLight" resultType="com.light.pojo.Light">
+  		select * from light where lightId = #{lightId}
+  </select>
+  
+  <select id="selectlightBrand" resultType="com.light.pojo.Light">
+  		select * from light where brandId = #{brandId}
+  </select>
+  
+  <!-- 取出灯饰商品最新6条信息表数据-->
+  <select id="selectLightzuixin" resultType="com.light.pojo.Light">
+  		select lightId,price,images,SUBSTR(description,12,8) AS description from light order by lightId desc limit 6
+  </select>
+  
+   <!-- 取出最畅销的6条灯饰商品信息表数据-->
+  <select id="selectLightchangxiao" resultType="com.light.pojo.Light">
+  		select light.lightId,price,images,SUBSTR(light.description,12,8) AS description from light,statistics where light.lightId = statistics.lightId order by SaleCount desc limit 6
+  </select>
+  
+  <!-- 查询销售量  -->
+  <select id="selectLS" resultType="com.light.pojo.LightShow">
+  		SELECT light.lightId,stuff,color,locate,price,quantity,description,images,clicks,storeCount,saleCount from light,statistics WHERE light.lightId = statistics.lightId and light.lightId=#{lightId}
+  </select>
+  
+  <!-- 修改点击数 -->
+  <update id="updateclicks" parameterType="int">
+		update statistics set clicks = clicks+1 where lightId = #{lightId}
+  </update>
+  
+   <update id="updatenumber" parameterType="com.light.pojo.Light">
+		update 	light set price = #{price},quantity =  #{quantity} where lightId=#{lightId}
+  </update>
+  <update id="updateState" parameterType="com.light.pojo.Light">
+		update 	light set lightState = #{lightState} where lightId=#{lightId}
+  </update>
+  
+   <!-- 查询灯饰品牌信息 -->
+   <select id="selectWarestypeBrand" resultType="com.light.pojo.Brand">
+  		SELECT * FROM brand WHERE brandName= #{brandName}
+  </select>
+  
+   <select id="selectWarestypeAll" resultType="com.light.pojo.Brand">
+  		SELECT * FROM brand 
+   </select>
+   
+   <insert id="insertbrand" parameterType="com.light.pojo.Brand" >
+ 		insert into brand (brandName)  values (#{brandName})
+   </insert>
+  
+   <!-- 查询灯饰风格信息 -->
+   <select id="selectWarestypeStyle" resultType="com.light.pojo.Style">
+  		SELECT * FROM style WHERE styleName= #{styleName}
+   </select>
+   
+   <insert id="insertStyle" parameterType="com.light.pojo.Style" >
+ 		insert into style (styleName)  values (#{styleName})
+   </insert>
+  
+   <!-- 查询灯饰种类信息 -->
+   <select id="selectWarestypeCatagory" resultType="com.light.pojo.Catagory">
+  		SELECT * FROM catagory  WHERE catagoryName= #{catagoryName}
+   </select>
+   
+   <select id="selectWarestypeAllCatagory" resultType="com.light.pojo.Catagory">
+  		SELECT * FROM catagory  
+   </select>
+  
+   <insert id="insertCatagory" parameterType="com.light.pojo.Catagory" >
+ 		insert into catagory (catagoryName)  values (#{catagoryName})
+   </insert>
+  
+</mapper>

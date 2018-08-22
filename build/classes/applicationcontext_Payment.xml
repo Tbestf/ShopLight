@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+	<!-- 定时器的数据dao -->
+	<bean id="ordersRegularDaoImpl" class="com.shoes.dao.impl.OrdersRegularDaoImpl">
+	<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	<!-- 定时器的数据service -->
+	<bean id="ordersRegularServiceImpl" class="com.shoes.service.impl.OrdersRegularServiceImpl"> 
+	<property name="ordersRegularDaoImpl" ref="ordersRegularDaoImpl"></property>
+	</bean>
+	
+	<!-- 定时器配置 -->
+	<bean id="ordersRegular" class="com.shoes.util.OrdersRegular">
+	<property name="ordersRegularServiceImpl" ref="ordersRegularServiceImpl"></property>
+	</bean>
+	<!-- JobDetail 工作任务的配置 -->
+	<bean id="ordersJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 指定任务类 -->
+		<property name="targetObject" ref="ordersRegular" />
+		<!-- 指定任务执行的方法 -->
+		<property name="targetMethod" value="execute" />
+	</bean>
+	  <!-- Trigger触发器-->
+	  <bean id="ordersJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+	  <property name="jobDetail" ref="ordersJobDetail"></property>
+	  <property name="cronExpression" value="0 0/30 * * * ?" />
+	  </bean>
+	   <!--SchedulerFactoryBean调度器-->
+	       <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+               <!--ref 触发器-->
+                <ref bean="ordersJobTrigger"></ref>
+            </list>
+        </property>
+    </bean>
+
+	<!-- 商品详情Dao层依赖注入 -->
+	<bean id="paymentDaoImpl" class="com.shoes.dao.impl.PaymentDaoImpl">
+		<property name="sqlsessionfactory" ref="sqlSessionFactory"></property>
+	</bean>
+
+	<!-- 商品详情service层依赖注入 -->
+	<bean id="paymentServiceImpl" class="com.shoes.service.impl.PaymentServiceImpl">
+		<property name="waresDetailDao" ref="waresDetailDaoImpl"></property>
+	</bean>
+
+	<!-- 使用事务 -->
+	<tx:advice id="paymentDetailAdivce" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="selectWaresImgsByWiId" read-only="true" />
+		</tx:attributes>
+	</tx:advice>
+	<!-- 配置事务切点 -->
+	<aop:config>
+		<aop:pointcut
+			expression="execution(* com.shoes.service.impl.WaresDetailServiceImpl.*(..))"
+			id="waresDetailpointcut" />
+		<aop:advisor advice-ref="waresDetailAdivce" pointcut-ref="waresDetailpointcut" />
+	</aop:config>
+</beans>

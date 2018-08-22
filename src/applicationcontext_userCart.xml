@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+	<!-- 购物车Dao层依赖注入 -->
+	<bean id="userCartDaoImpl" class="com.shoes.dao.impl.UserCartDaoImpl">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"></property>
+	</bean>
+	
+	<!-- 购物车service层依赖注入 -->
+	<bean id="userCartServiceImpl" class="com.shoes.service.impl.UserCartServiceImpl">
+		<property name="iUserCartDao" ref="userCartDaoImpl"></property>
+	</bean>
+	
+	<!-- 使用事务 -->
+	<tx:advice id="userCartAdivce" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="selectUserCart" read-only="true"/>
+			<tx:method name="userCartUpdate" propagation="REQUIRED"/>
+			<tx:method name="userCartDelete" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置事务切点 -->
+	<aop:config>
+		<aop:pointcut expression="execution(* com.shoes.service.impl.UserCartServiceImpl.*(..))" id="userCartpointcut"/>
+		<aop:advisor advice-ref="userCartAdivce" pointcut-ref="userCartpointcut"/>
+	</aop:config>
+	
+</beans>

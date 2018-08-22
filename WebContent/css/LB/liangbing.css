@@ -1,0 +1,65 @@
+.liangbing_addSize_div tr td{
+	font-size:13px;
+	line-height:25px;
+}
+.liangbing_addSize_div tr td input{
+	font-size:12px
+}
+.liangbing_td1{
+	text-align:right;
+	padding: 10px 5px 0px 0px;
+	
+}
+.liangbing_td2{
+	padding: 20px 0px 0px 2px;
+	
+}
+.liangbing_input{
+	height: 25px;
+}
+
+.liangbing_addSize_div{
+	padding: 0px 0px 0px 25px;
+}
+.liangbing_table{
+	margin: 0px auto;
+	
+}
+.liangbing_table tr{
+	border:1px solid #E8E3E3;
+	line-height:28px;
+}
+.liangbing_table tr td{
+	padding:5px 5px 3px 5px;
+	font-size: 13px;
+}
+.liangbing_table tr .liangbing_span{
+	font-size: 8px;
+	display: none;
+	cursor: pointer;
+	padding: 3px;
+	border: 1px solid #C1C0C0;
+}
+.liangbing_table tr .liangbing_span1{
+	font-size: 8px;
+	padding: 3px;
+	cursor: pointer;
+	background-color: #888888;
+	
+}
+.liangbing_addSize_h3{
+	color:#F89C5E;
+	padding: 5px 0px 0px 8px;
+	float: left;
+	font-size: 15px;
+}
+.liangbing_addSize_li{
+	float: left;
+	list-style:none;
+	
+	padding: 22px 0px 0px 15px;
+}
+.liangbing_td2 textarea{
+	font-size: 12px;
+}
+

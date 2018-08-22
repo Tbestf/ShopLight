@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.UserMapper">
+	<resultMap id="userInfoMap" type="com.light.pojo.Users">
+		<id column="userId" property="userId" jdbcType="INTEGER" />
+		<result column="loginPwd" property="loginPwd" jdbcType="VARCHAR" />
+		<result column="loginId" property="loginId" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="userName" property="userName" jdbcType="VARCHAR" />
+		<result column="gender" property="gender" jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="postalCode" property="postalCode" jdbcType="VARCHAR" />
+		<result column="userRoleId" property="userRoleId" jdbcType="INTEGER" />
+		<result column="userStateId" property="userStateId" jdbcType="INTEGER" />
+		<result column="lastLoginTime" property="lastLoginTime" jdbcType="VARCHAR" />
+		<result column="email" property="email" jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- 修改个人信息 -->
+	<update id="updateusers" parameterType="com.light.pojo.Users">
+		update user set userName = #{userName}, gender = #{gender}, email = #{email}, address = #{address}, 
+						postalCode = #{postalCode} where userId = #{userId}
+	</update>
+	
+	<!-- 查询个人信息 -->
+	<select id="selectusers" resultType="com.light.pojo.Users">
+  		select * from user where userId = #{userId}
+  	</select>
+  	
+	<!-- 记录用户最后登录时间 -->
+	<update id="updateTimeUsers" parameterType="com.light.pojo.Users">
+		update user set lastLoginTime = #{lastLoginTime} where userId = #{userId}
+	</update>
+	
+	
+	<!-- 查询该用户所有信息 -->
+	<select id="selectUsers" resultType="com.light.pojo.Users" >
+		select * from user where loginId = #{loginId} and loginPwd = #{loginPwd}
+	</select>
+	
+	<!-- 查询密码是否正确 -->
+	<select id="selectloginPwd" resultType="string" >
+		select loginPwd from user where loginId = #{loginId}
+	</select>
+	
+	<!-- 注册用户成功时初始化数据  -->
+	<insert id="usersave" parameterType="com.light.pojo.Users" >
+ 		insert into user(loginId,loginPwd,phone,userRoleId,userStateId) values (#{loginId},#{loginPwd},#{phone},1,1)
+ 	</insert>
+  
+</mapper>

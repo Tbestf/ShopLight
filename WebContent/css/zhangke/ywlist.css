@@ -1,0 +1,698 @@
+body {
+	margin: 0px;
+	background-image: none;
+	position: static;
+	left: auto;
+	width: auto;
+	margin-left: 0;
+	margin-right: 0;
+	text-align: left;
+}
+
+body, ul, li, p, h1, h2, h3, h4, h5, dl, dd, dt {
+	margin: 0;
+	padding: 0;
+	font-family: "微软雅黑";
+	font-size: 13px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a, img {
+	vertical-align: middle;
+	border: 0;
+}
+
+ul, li, a {
+	list-style: none;
+	text-decoration: none;
+	font-size: 15px;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.x_wrap {
+	width: 1024px;
+	height: auto;
+	margin: 0 auto;
+}
+
+/*以选择 的属性*/
+.selector_line dd li.sub_classify .sub_classify_close {
+	display: inline-block;
+	width: 9px;
+	height: 9px;
+	background: url(../../images/zhangke/list_select_icon.png) no-repeat;
+	background-position: -2px -231px;
+	cursor: pointer;
+}
+
+.selector_line dd li.sub_classify {
+	display: inline-block;
+	width: auto;
+	float: left;
+	padding: 0px 10px;
+	margin-top: 1px;
+	margin-right: 8px;
+	line-height: 19px;
+	vertical-align: middle;
+	border: 1px solid #c40000;
+	border-radius: 2px;
+}
+
+.selector_line dd li.sub_classify a {
+	color: #c40000;
+}
+
+.selector_box {
+	border-top: 1px solid #ddd;
+	width: 930px
+}
+
+.selector_box .selector_info, .list_browse dt {
+	line-height: 35px;
+	overflow: hidden;
+	border: 1px dashed #ddd;
+	border-left: 0;
+	border-right: 0;
+	background-color: #f1f1f1;
+}
+
+.selector_box .selector_info h3 {
+	padding-left: 10px;
+	display: inline-block;
+	float: left;
+}
+
+.selector_box .selector_info h3 b {
+	color: #e4393c;
+	margin-right: 5px;
+}
+
+.selector_box .selector_info h3 em {
+	font-style: normal;
+	color: #666;
+}
+
+.selector_box .selector_info span {
+	padding-left: 20px;
+	float: left;
+	color: #666;
+}
+
+.selector_line {
+	line-height: 35px;
+	overflow: hidden;
+	position: relative;
+	border-bottom: 1px dashed #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+
+.selector_line.current {
+	border: 2px solid #edd28b;
+	margin-top: -1px;
+	margin-left: 2px; 
+
+}
+
+.selector_line dt {
+	position: absolute;
+	left: 0;
+	padding-left: 10px;
+	width: 100px;
+	background-color: #fafafa;
+	padding: 8px 0;
+	text-align: center;
+}
+
+.selector_line dd a {
+	color: #666;
+	vertical-align: middle;
+}
+
+.selector_line dd li {
+	display: inline-block;
+	width: 110px;
+}
+
+.selector_line .clear-slt {
+	float: right;
+}
+
+.selector_line .values .clear-slt i {
+	background: url(../../images/zhangke/cart-icon.png) no-repeat;
+	background-position: -227px -637px;
+	display: inline-block;
+	float: left;
+	height: 15px;
+	margin: 4px 0 0;
+	width: 15px;
+	border: 0;
+}
+
+.selector_line:hover .values .clear-slt i {
+	border: 0;
+}
+
+.selector_line.current .values {
+	height: 100%;
+}
+
+.selector_line.current .values a i {
+	display: inline-block;
+}
+
+.selector_line.selected .values {
+	height: 100%;
+}
+
+/*类型标签的属性*/
+.selector_line .values {
+	padding: 5px 90px 10px 110px;
+	width: auto;
+	height: 35px;
+	background-color: #fff;
+}
+
+/*多选时 标签前面的 图标 属性*/
+.selector_line .values a i {
+	display: none;
+	width: 12px;
+	height: 12px;
+	margin: -2px 5px 0 0;
+	border: 1px solid #ccc;
+	vertical-align: middle;
+	background: url(../../images/zhangke/list_select_icon.png) no-repeat;
+	background-position: 999px 999px;
+}
+
+.selector_line .values a:hover {
+	color: #e4393c;
+}
+
+.selector_line .values a:hover i {
+	border: 1px solid #e4393c;
+}
+
+.selector_line .values a.current i {
+	background-position: 0px -49px;
+	border: 1px solid #e4393c;
+}
+
+.selector_line .values .sl_btns {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 5px;
+	display: none;
+}
+
+.selector_line .values .sl_btns a {
+	padding: 5px 10px;
+	margin-right: 5px;
+	border-radius: 2px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	background: #f7f7f7 -moz-linear-gradient(center top, #f7f7f7, #f2f2f2)
+		repeat-x scroll 0 0;
+}
+
+.selector_line .values .sl_btns a.disabled {
+	background: #fff;
+	color: #ccc;
+	opacity: 0.2;
+}
+
+.selector_line .values .sl_btns a.current {
+	background: #e74649;
+	color: #fff;
+	border-color: #e74649;
+}
+
+.selector_line .list_operation {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 130px;
+	float: right;
+}
+
+/*更多  多选*/
+.list_operation i {
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	/* vertical-align: middle; */
+	margin-top: 5px;
+	background: url(../../images/zhangke/list_select_icon.png) no-repeat;
+	transition: background-position 0.15s ease-in-out 0s
+}
+
+.list_operation .more i {
+	margin-left: 5px;
+	background-position: 3px -136px;
+}
+
+.list_operation .more i:hover {
+	background-position: 3px -154px;
+	border-color: #f00;
+}
+
+.list_operation .more.current i {
+	margin-left: 5px;
+	background-position: 3px -67px;
+	border: 1px solid #d5d5d5;
+}
+
+.list_operation .more.current i:hover {
+	background-position: 3px -85px;
+	border-color: #f00;
+}
+
+.list_operation .options {
+	line-height: 20px;
+	padding: 1px 5px 1px 0;
+	margin-left: 15px;
+}
+
+.list_operation .options i {
+	background-position: 3px -248px;
+}
+
+.list_operation .options:hover {
+	border-color: #f00;
+}
+
+.list_operation .options:hover i {
+	background-position: 3px -269px;
+}
+
+.filter_list {
+	margin: 10px 0;
+	padding: 8px 22px;
+	border: 1px solid #ddd;
+	background-color: #fff;
+	overflow: hidden;
+	width: 1154px;;
+	height: 24px;
+}
+
+.filter_list .list_sort {
+	width: 310px;
+}
+
+.filter_list .list_sort a {
+	padding: 3px 16px 3px 8px;
+	float: left;
+	color: #656565;
+	position: relative;
+	background-color: #fff;
+	margin: 0 10px 0 0;
+	background-color: #f2f2f2;
+}
+
+.filter_list .list_sort a.current {
+	color: #fff;
+	color: #c1121d;
+}
+
+.filter_list .list_sort i {
+	height: 10px;
+	line-height: 10px;
+	right: 5px;
+	top: 6px;
+	width: 7px;
+	display: inline-block;
+	position: absolute;
+	background: url(../../images/zhangke/cart-icon.png) no-repeat;
+}
+
+.filter_list .list_sort i.f-ico-arrow-d {
+	background-position: -229px -656px;
+}
+
+.filter_list .list_sort .current i.f-ico-arrow-d {
+	background-position: -237px -656px;
+}
+
+.filter_list .list_sort .current.default-a {
+	color: #fff;
+	background-color: #c1121d;
+	padding: 6px 12px;
+}
+
+.filter_list .list_sort i.f-ico-triangle-mt {
+	height: 5px;
+	top: 5px;
+	background-position: -245px -656px;
+}
+
+.filter_list .list_sort i.current .f-ico-triangle-mt {
+	background-position: -252px -656px
+}
+
+.filter_list .list_sort i.f-ico-triangle-mb {
+	height: 5px;
+	top: 12px;
+	background-position: -229px -661px;
+}
+
+.list_search input {
+	padding: 3px;
+	width: 110px;
+	height: 17px;
+	line-height: 17px;
+	color: #999;
+	border: 1px solid #ccc;
+	vertical-align: middle;
+}
+
+.list_search a {
+	display: inline-block;
+	height: 14px;
+	line-height: 14px;
+	padding: 4px 13px 5px;
+	margin-left: -1px;
+	border: 1px solid #ccc;
+	border-radius: 0;
+	color: #333;
+}
+
+.filter_page span {
+	line-height: 23px;
+	color: #666;
+	float: left;
+}
+
+.filter_page b {
+	color: #e4393c;
+}
+
+.filter_page em {
+	font-style: normal;
+}
+
+.filter_page a {
+	display: inline-block;
+	margin-right: -1px;
+	float: left;
+	width: 14px;
+	height: 25px;
+	background: url(../../images/zhangke/list_select_icon.png) no-repeat #fff;
+}
+
+.filter_page a.disabled {
+	
+}
+
+.filter_page .page_n {
+	background-position: center -170px;
+}
+
+.filter_page .page_p {
+	background-position: center -98px;
+}
+
+/*main_ctr*/
+.list_pro_box {
+	height:900px;
+	float: left;
+	margin-top: 10px;
+	padding-left: 20px;
+	overflow: hidden;
+	background-color: #fff;
+	border: 1px solid #ddd;
+}
+
+.pro_list {
+	width: 1024px;
+	float: left;
+	margin-top: 28px;
+}
+
+.pro_list .pro_item {
+	width: 272px;
+	height: 370px;
+	margin-right: 12px;
+	margin-bottom: 34px;
+	border: 1px solid #fff;
+	display: inline-block;
+	overflow: hidden;
+}
+
+.pro_list .pro_item .pro_like, .pro_surplus, .pro_list .pro_item .pro_add-cart
+	{
+	display: none;
+}
+/*.pro_list .pro_item:hover{box-shadow: 0 0 2px 2px #f8f8f8;}*/
+.pro_list .pro_item:hover .pro_like {
+	position: absolute;
+	left: 16px;
+	bottom: 15px;
+	display: block;
+	width: auto;
+	line-height: 25px;
+	color: #656565;
+	padding: 0 50px 0 0;
+}
+
+.pro_list .pro_item:hover .pro_like i {
+	background: url(../../images/zhangke/list_select_icon.png) no-repeat;
+	display: inline-block;
+	width: 18px;
+	height: 25px;
+	vertical-align: middle;
+	background-position: center -207px;
+}
+
+.pro_list .pro_item:hover .pro_add-cart {
+	position: absolute;
+	right: 16px;
+	bottom: 20px;
+	display: block;
+	width: 80px;
+	height: 21px;
+	line-height: 21px;
+	color: #fff;
+	background-color: #e4393c;
+	text-align: center;
+	text-decoration: none;
+	font-size: 13px;
+}
+
+.pro_list .pro_item:hover .pro_add-cart:hover {
+	position: absolute;
+	right: 16px;
+	bottom: 20px;
+	display: block;
+	width: 80px;
+	height: 21px;
+	line-height: 21px;
+	color: #fff;
+	background-color: #C1121D;
+	text-align: center;
+	text-decoration: none;
+	font-size: 13px;
+}
+
+.pro_list .pro_item:hover .pro_surplus {
+	position: absolute;
+	left: 110px;
+	bottom: 21px;
+	display: block;
+	color: #656565;
+}
+
+.pro_list .pro_item:hover .pro_like:hover i {
+	background-position: center -307px;
+}
+
+.pro_new {
+	width: 50px;
+	height: 20px;
+	position: absolute;
+	top: 10px;
+	right: 28px;
+	background-color: #60b791;
+	color: #fff;
+	text-align: center;
+	font-weight: normal;
+}
+
+.pro_hot {
+	width: 50px;
+	height: 20px;
+	position: absolute;
+	top: 10px;
+	right: 28px;
+	background-color: #DF2D39;
+	color: #fff;
+	text-align: center;
+	font-weight: normal;
+}
+
+.pro_limit {
+	width: 50px;
+	height: 20px;
+	position: absolute;
+	top: 10px;
+	right: 28px;
+	background-color: #EB6412;
+	color: #fff;
+	text-align: center;
+	font-weight: normal;
+}
+
+.pro_info .pro_img {
+	display: block;
+	text-align: center;
+	height: 260px;
+	margin-top: 6px;
+	margin-bottom: 8px;
+}
+
+.pro_img>img {
+	width: 260px;
+	height: 260px;
+}
+
+.pro_info .pro_scroll {
+	width: 272px;
+	overflow: hidden;
+	position: relative;
+}
+
+.pro_info .pro_scroll span {
+	position: absolute;
+	display: none;
+	width: 7px;
+	line-height: 33px;
+	z-index: 2;
+	font-family: "å®‹ä½“";
+	font-size: 16px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.pro_info .pro_scroll .pro_wrap {
+	height: 42px;
+	width: 240px;
+	margin-left: 16px;
+}
+
+.pro_info .pro_scroll.current {
+	padding-left: 51px;
+}
+
+.pro_info .pro_scroll.current .pro_wrap {
+	width: 185px;
+	overflow: hidden;
+}
+
+.pro_info .pro_scroll.current span {
+	display: block;
+	color: #a1a1a1;
+}
+
+.pro_scroll .pro_wrap>ul {
+	width: 240px;
+	height: 42px;
+	overflow: hidden;
+}
+
+.pro_scroll .pro_wrap>ul>li {
+	width: 33px;
+	height: 33px;
+	margin-right: 7px;
+	border: 1px solid #ddd;
+	list-style: none;
+	float: left;
+}
+
+.pro_scroll .pro_wrap>ul>li>img {
+	width: 100%;
+}
+
+.pro_scroll .pro_wrap li.current {
+	border: 1px solid #f00;
+	width: 40px;
+	height: 40px;
+}
+
+.pro_info .pro_scroll .pro_prev {
+	left: 2px;
+}
+
+.pro_info .pro_scroll .pro_next {
+	right: 0;
+}
+
+.pro_info .pro_price {
+	margin: 7px 6px;
+	width: 240px;
+	height: 22px;
+	line-height: 22px;
+	overflow: hidden;
+	color: #e4393c;
+	margin-left: 16px;
+}
+
+.pro_info .pro_price b {
+	font-size: 20px;
+	font-weight: 400;
+}
+
+.pro_info .pro_price span {
+	float: left;
+	font-size: 18px;
+}
+
+.pro_info .pro_price .pro_mark {
+	display: inline-block;
+	float: left;
+}
+
+.pro_info .pro_price .pro_mark span {
+	background-color: #e4393c;
+	color: #fff;
+	padding: 0 5px;
+	margin-left: 5px;
+}
+
+.pro_info .pro_title {
+	width: 200px;
+	height: 19px;
+	line-height: 19px;
+	color: #666;
+	font-size: 13px;
+	overflow: hidden;
+	margin-top: 7px;
+	margin-left: 16px;
+}
+
+/* 获取焦点后显示的样式 */
+.pro_list .pro_item:hover .pro_info .pro_title {
+	width: 210px;
+	height: 38px;
+}
+
+.pro_info {
+	position: absolute;
+	border: 1px solid white;
+}
+
+.pro_list .pro_item .pro_info:hover {
+	background: white;
+	height: 430px;
+	z-index: 2;
+	border-color: #e9e9e9;
+}

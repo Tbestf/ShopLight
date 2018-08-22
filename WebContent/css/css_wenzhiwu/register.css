@@ -1,0 +1,359 @@
+/* CSS Document */
+*{
+	padding: 0px;
+	margin: 0px;
+	font-size: 12px;
+	font-family: "Microsoft YaHei", "微软雅黑", STXihei, "华文细黑";
+}
+.container-cust{
+	width: 1024px;
+	margin: 0 auto;
+	/*border-left: 1px solid black;
+	border-right: 1px solid black;*/
+}
+
+#top-bar {
+	height: 30px;
+	width: inherit;
+	background: #ddd;
+}
+
+.top-bar-content {
+	height: 30px;
+	line-height: 30px;
+}
+.top-bar-content a{
+	text-decoration: none;
+	color: #222;
+	transition: color 0.4s;
+}
+.top-bar-content a:hover{
+	color: #C1121D;
+}
+
+#mid-header {
+	height: 80px;
+}
+
+.mid-header-content {
+	height: 80px;
+}
+
+#search {
+	padding: 22px 80px;
+}
+#search input{
+	border: 1px solid #D9534F;
+}
+
+.menu-grid {
+	height: 52px;
+	text-align: center;
+	line-height: 52px;
+	transition: background 0.5s;
+	padding: 0px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.menu-grid:hover{
+	background: white;
+}
+
+.menu-grid > a {
+	display: block;
+	height: 50px;
+	font-size: 16px;
+	color: white;
+	text-decoration: none;
+	transition: color 0.5s;
+}
+.menu-grid > a:hover{
+	color: #C1121D;
+}
+
+#all-category {
+	color: white;
+	font-size: 16px;
+	text-align: center;
+	line-height: 52px;
+	background:#D9534F;
+	transition: background 0.5s;
+	padding: 0px;
+}
+#all-category:hover{
+	background: #C1121D;
+}
+
+#all-category-content {
+	width: 256px;
+	height: 500px;
+	background: #222;
+	display: none;
+	opacity: 0.8;
+	position: absolute;
+	z-index: 500
+}
+
+.hidden-box {
+	width: 1024px;
+	height: 410px;
+	background: #222;
+	opacity: 0.8;
+	position: absolute;
+	display: none;
+	z-index: 500;
+	color: white;
+	font-size: 50px;
+	text-align: center;
+	line-height: 410px;
+}
+
+.carousel-div {
+	text-align: center
+}
+
+
+#footer {
+	height: 220px;
+	background: #222;
+	margin-top: 20px;
+}
+
+.new-grid {
+	
+}
+
+#right-sidebar {
+	width: 234px;
+	height: 462px;
+	position: fixed;
+	top: 165px;
+	right: -200px;
+	z-index: 1000;
+}
+
+.right-show-bar {
+	width: 34px;
+	height: 462px;
+	background: #191919;
+	float: left;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.right-show-content {
+	width: 200px;
+	height: 462px;
+	float: right;
+	background: #eee;
+}
+
+.bar-icon {
+	height: 77px;
+	width: 34px;
+	line-height: 76px;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: background 0.1s;
+}
+
+.bar-icon:hover{
+	background: #C9302C;
+}
+
+.bar-icon a{
+	color: white;
+}
+
+.bar-icon a span{
+	font-size: 16px;
+}
+
+.show-content-title {
+	height: 30px;
+	background-color: #ddd;
+	padding: 0 10px;
+}
+
+.show-content-title-text {
+	line-height: 34px;
+	float: left;
+}
+
+.show-content-title-close {
+	line-height: 34px;
+	float: right;
+}
+
+.settle-account {
+	position: absolute;
+	bottom: 0px;
+	margin-bottom: 10px;
+	width: 80px;
+}
+
+
+
+#register-mian{
+	width:1024px;
+	height:560px;
+	background-color: antiquewhite;
+}
+
+#register-left{
+	width: 600px;
+	height: 100%;
+	background-color: white;
+	float: left;
+	padding-left:  80px;
+	/* border-right: 1px solid black; */
+}
+
+#register-header{
+	width:400px;
+	font-size: 20px;
+	padding-top: 20px;
+	margin:0 auto;
+	height: 20px;
+}
+#main{
+	width:700px;
+	margin:0 auto;
+	}
+
+.content{
+	padding:10px;
+	}
+	.inputs{
+		border:solid 1px #a4c8e0;
+		width:150px;
+
+	}
+	
+
+	table form dl{
+		clear:both;
+		}
+	table form dt,dd{
+		float:left;
+		margin-top: 15px;
+		}
+	table form dt{
+		width:130px;
+		text-align:right;
+		font-size:14px;
+		height:10px;
+		line-height:15px;
+		}
+	table form dd{
+		font-size:12px;
+		color:#666666;
+		width:306px;
+		}
+
+#register-right{
+	width: 424px;
+	height: 100%;
+	background-color: white;
+	float: left;
+	padding-left:  80px;
+}
+
+
+#footer-left li{
+	float: left;
+	list-style: none;
+	margin-right: 60px;
+	margin-left: 20px;
+}
+#footer-left h4{
+	color: white;
+	font-weight: bold;
+}
+#footer-right{
+	padding-left: 50px;
+}
+#footer-right h4{
+	color: white;
+	font-weight: bold;
+}
+#footer-right p{
+	color: white;
+	font-size: 18px;
+	margin-bottom: 0px;
+}
+#footer-right>span{
+	color: white;
+}
+
+#footer-left a{
+	display: block;
+	color: white;
+	font-size: 12px;
+	margin: 5px 0;
+	text-decoration: none;
+	transition: color 0.4s;
+}
+#footer-left a:hover{
+	color: #C1121D;
+}
+
+#footer-left{
+	margin-top: 30px;
+}
+#footer-right{
+	margin-top: 30px;
+}
+
+.shoes-grid-2-inner {
+	height: 230px;
+	text-align: center;
+	border-bottom: 1px solid #ddd;
+	overflow: hidden;
+}
+.shoes-grid-2-inner img{
+	transition: transform 0.5s;
+}
+.shoes-grid-2-inner img:hover{
+	transform: scale(1.1,1.1);
+}
+
+.buy-info-2 {
+	height: 40px;
+	margin: 9px 0 9px 20px;
+	padding-left: 10px;
+	border-left: 2px solid #F99302;
+	font-size: 14px;
+	text-align: left;
+}
+
+
+
+
+/*当鼠标放到文本框时，提示文本的样式*/
+.import_prompt{
+	color:red;
+	line-height:20px;
+	}
+/*当文本框内容不符合要求时，提示文本的样式*/
+.error_prompt{
+	color:red;
+	background-repeat:no-repeat;
+	background-position:5px 2px;
+	line-height:20px;
+	}
+/*当文本框内容输入正确时，提示文本的样式*/
+.ok_prompt{
+	color:red;
+	background-repeat:no-repeat;
+	background-position:5px 2px;
+	line-height:20px;
+	}
+	
+}
+
+
+
+
+

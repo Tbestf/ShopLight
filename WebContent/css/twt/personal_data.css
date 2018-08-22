@@ -1,0 +1,57 @@
+
+.personal_data_article{
+	overflow:hidden;
+	background:#f4f4f4;
+	height:1085px;
+}
+
+.personal_data_aside{
+	height:1085px;
+	float:left;
+	background:#ffffff;
+	border:1px solid #dfdfdf;
+}
+
+.personal_data_section{
+	background:#ffffff;
+	margin-left:15px;
+	height:1015px;
+	display:block;
+	border:1px solid #dfdfdf;
+}
+
+.personal_data_biaoti{
+	margin-left:40px;
+	padding-top:33px;
+	list-style:none;
+}
+
+.personal_data_form{
+	margin-left: 40px;
+}
+
+.personal_data_form td{
+	font: normal 13px "Î¢ÈíÑÅºÚ";
+	color:"#666666";
+	padding:0px 0px 15px 0px;
+}
+
+.personal_data_biaoti_zhiti{
+	font-size:17px;
+}
+
+.personal_date_red{
+	color:red;
+}
+
+.personal_date_gray{
+	color:gray;
+}
+
+.personal_date_top5px{
+	padding-top:5px;
+}
+
+.personal_date_right3px{
+	padding-right:3px;
+}

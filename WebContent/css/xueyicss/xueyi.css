@@ -1,0 +1,32 @@
+/* CSS Document */
+*{
+	font-size:12px;
+}
+
+.nav-menu {
+	font-size: 14px;
+}
+
+#myCarousel {
+	margin: 10px 0;
+}
+
+.carousel-inner img {
+	margin: 0 auto;
+}
+.carousel-control {
+	font-size: 100px;
+}
+
+.right-bar {
+	width: 34px;
+	height: 450px;
+	background: #191919;
+	top: 160px;
+	left: 1484px;
+	position: fixed;
+	border-radius: 5px;
+	text-align: center;
+	padding-top: 20px;
+	
+}

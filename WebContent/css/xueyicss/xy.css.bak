@@ -1,0 +1,171 @@
+
+
+/***************白色*************/
+#baise{
+	width:60%;
+	margin-left:250px;
+	background-color:#FFFFFF;
+	
+}
+/*--------------------top------------------------*/
+#top{
+	width:100%;
+	height:80px;
+	margin-top:-22px;
+}
+
+#top-left{
+	width:45%;
+	height:100%;
+	float:left;	
+}
+
+#top-left h4{
+	padding-top:55px;
+	padding-left:50PX;
+	color:#222222;
+}
+
+#top-rigth{
+	width:45%;
+	height:100%;
+	float:right;
+	padding-top:54px;
+	padding-left:190PX;
+}
+
+/*-------------------中间-----------------------*/
+#centers{
+	width:100%;
+	margin:0px auto;
+}
+
+#middtm-top{
+	width:100%;
+	height:350px;
+}
+
+table{
+	width:99%;
+	height:350px;
+	margin-left:3px;
+}
+
+#trs{
+	width:100%;
+	height:35px;
+	background-color:#F5F5F5;
+	color:#222222;
+}
+td{
+	text-align:center;
+}
+
+#tishi{
+	margin-top:10px;
+	margin-left:11px;
+}
+
+/*--------------------底部-------------------------*/
+#sdsd{
+	width:100%;
+	height:560px;
+	margin:0px auto;
+	border:1px solid #dddddd;
+}
+
+#sss{
+	width:100%;
+	height:40px;
+	padding-top:8px;
+	margin-left:11px;
+	
+}
+
+#tui{
+	width:110px;
+	height:35px;
+	float:right;
+	margin-top:-5px;
+	margin-right:625px;
+}
+
+#tui button{
+	width:50px;
+	height:30px;
+	margin-left:-1PX;
+	font-size:12px;
+	text-align:center;
+}
+
+#shuliang{
+	width:340px;
+	height:40px;
+	margin-left:70px;
+	margin-top:-20px;
+	
+}
+
+#shuliang input{
+	height:26px;
+}
+
+#ssss{
+	margin-top:-25px;
+	margin-left:68px;
+}
+
+#yuanyin{
+	width:100%;
+	height:40px;
+	margin-top:-5px;
+}
+
+#miaoshu{
+	width:100%;
+	margin-top:-12px;
+	
+}
+#duo{
+	width:40%;
+	height:130px;
+	margin-left:80px;
+	margin-top:-16px;	
+	border:1px
+}
+
+#hh{
+	width:50%;
+	height:20px;
+	margin-left:235px;
+	margin-top:8px;
+	border:1px solid #FFFFFF;
+}
+textarea{
+	float:left;
+	resize:none;
+}
+
+#xin{
+	width:100%;
+	height:100px;
+	margin-left:80px;
+	margin-top:-15px;
+}
+
+#xin hr{
+	width:726px;
+	margin-left:-80px;
+	margin-top:25px;
+}
+
+#anniu{
+	margin-top:46px;
+	margin-left:310px;
+	
+}
+
+#anniu input{
+	width:80px;
+	height:38px;
+}

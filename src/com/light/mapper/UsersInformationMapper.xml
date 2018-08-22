@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.light.mapper.UsersInformation" >
+
+  <!-- 修改订单信息表数据 -->
+  <update id="updateUser" parameterType="com.light.pojo.Users">
+		update 	user set  userId=#{userId}, userName=#{userName},
+		address=#{address},phone=#{phone },email=#{ email},
+		gender=#{ gender}  where userId=#{userId}
+  </update>
+  
+   <update id="updateState" parameterType="com.light.pojo.Users">
+		update 	user set userStateId=#{userStateId}  where userId=#{userId}
+  </update>
+  
+  <update id="updatePassword" parameterType="com.light.pojo.Users">
+		update 	user set loginPwd=#{loginPwd}  where userId=#{userId}
+  </update>
+ 
+ 
+  <!-- 删除灯饰商品信息表数据 -->
+  <delete id="delectUsers" parameterType="com.light.pojo.Users"> 
+		delete from user where userId = #{userId}
+  </delete>
+
+  <!-- 查询订单信息表数据-->
+  <select id="selectDelectUsers" resultType="com.light.pojo.Users">
+  		select * from user where userStateId = 0
+  </select>
+  
+  <!-- 订单页面显示查询信息 -->
+  
+   <select id="selectUsers" resultType="map">
+  		select * from user where userStateId != 0
+  </select>
+  
+ 
+  <!-- 查询对应的商品描述-->
+<!--  <select id="selectUcartDescribes" parameterType="string" resultType="string"> -->
+<!--   		select waresInfo.describes  from waresInfo inner join waresRepertory on waresInfo.wi_id=waresRepertory.wi_id inner join  -->
+<!--   		waresSellInfo ON waresrepertory.wr_id=waresSellInfo.wr_id INNER JOIN  usercart ON usercart.wsell_id=waresSellInfo.wsell_id -->
+<!--   		where waressellinfo.wsell_id=#{value} -->
+<!--   </select> -->
+ 
+  <!-- 查询对应的图片 -->
+<!--   <select id="selectUcartWaresI" parameterType="string" resultType="string"> -->
+<!--   		SELECT waresimgs.imgs_small FROM waresimgs  INNER JOIN waresrepertory ON waresimgs.wi_id= waresrepertory.wi_id  -->
+<!--   		INNER JOIN waresSellInfo ON waresrepertory.wr_id=waresSellInfo.wr_id INNER JOIN  usercart ON usercart.wsell_id=waresSellInfo.wsell_id -->
+<!--   		WHERE waressellinfo.wsell_id=#{value} AND usercart.color_id=waresimgs.color_id -->
+<!--   </select> -->
+	
+	
+	
+	
+	<!-- 对购物车的单个商品的数量进行修改 -->
+<!-- 	<update id="updateUcartNum" parameterType="Usercart"> -->
+<!-- 		update 	usercart set ucart_num = #{ucartNum} where ucart_id=#{ucartId} -->
+<!-- 	</update> -->
+	
+	<!-- 对购物车里的商品进行删除操作或者清除购物车操作 -->
+<!-- 	<delete id="deleteUcart" parameterType="java.util.List">  -->
+<!-- 		delete from  usercart  -->
+<!-- 		<if test="list!=null"> -->
+<!-- 					where 同时满足多个条件时 会智能的只加一个where 保证sql的语句格式正确 -->
+<!-- 				<where> -->
+<!-- 					将集合list 的对象赋给coditionItem; list有多大就循环几次 -->
+<!-- 					<foreach collection="list" item="coditionItem"> -->
+<!-- 						or ucart_id = #{coditionItem} -->
+<!-- 					</foreach> -->
+<!-- 				</where> -->
+<!-- 			</if> -->
+<!-- 	</delete> -->
+</mapper>

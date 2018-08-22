@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+	<!-- 1、配置关联连接数据库的资源属性文件 -->
+	<bean id="propetiesbean"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="classpath:conn_mysql.properties" />
+	</bean>
+	<!-- 2、配置数据源bean -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- 数据库驱动类 -->
+		<property name="driverClassName" value="${jdbc.driverclass}" />
+		<!-- 数据库url -->
+		<property name="url" value="${jdbc.url}" />
+		<!-- username -->
+		<property name="username" value="${jdbc.username}" />
+		<!-- userpass -->
+		<property name="password" value="${jdbc.userpass}" />
+	</bean>
+	<!-- 3、配置sqlsessionfactory bean -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 依赖于数据源 -->
+		<property name="dataSource" ref="dataSource" />
+		<!-- 要对mybatis的映射配置文件进行管理 -->
+		 <property name="mapperLocations" value="classpath*:com/light/mapper/*Mapper.xml" />  
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- 扫描包路径，如果需要扫描多个包，中间使用半角逗号隔开 -->
+		<property name="basePackage" value="com.light.mapper"></property>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+	</bean>
+
+	<!-- 配置事务bean -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	<!-- 导入分配置文件在此处导入 -->
+	<!-- <import resource=""/> -->
+	 <import resource="classpath:applicationcontext_Light.xml"/> 
+	 <import resource="classpath:applicationcontext_Warestypes.xml"/> 
+	 <import resource="classpath:applicationcontext_MyShopCart.xml"/> 
+	 <import resource="classpath:applicationcontext_login.xml"/> 
+	 <import resource="classpath:applicationcontext_users.xml"/>
+	 <import resource="classpath:applicationcontext_register.xml"/>
+	 <import resource="classpath:applicationcontext_userdata.xml"/>
+	 <import resource="classpath:applicationcontext_Orders.xml"/>
+	 <import resource="classpath:applicationcontext_userInformation.xml"/>
+</beans>
